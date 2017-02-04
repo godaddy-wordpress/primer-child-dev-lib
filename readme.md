@@ -1,6 +1,6 @@
 # Primer Child Theme Development Library
 
-**Common tools to facilitate the development and testing of Primer child themes.**
+Common tools to facilitate the development and testing of Primer child themes.
 
 ## Installing
 
