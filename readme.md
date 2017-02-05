@@ -28,7 +28,7 @@ git add .dev/lib
 git commit -m "Update dev-lib"
 ```
 
-## Grunt Task Targets
+## Grunt Tasks & Targets
 
 Run all the targets in a task: `grunt imagemin`
 
