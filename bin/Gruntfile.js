@@ -28,8 +28,11 @@ module.exports = function( grunt ) {
 				],
 				cascade: false
 			},
-			all: {
-				src: [ 'editor-style.css', 'style.css' ]
+			editor: {
+				src: [ 'editor-style.css' ]
+			},
+			main: {
+				src: [ 'style.css' ]
 			}
 		},
 
@@ -67,14 +70,6 @@ module.exports = function( grunt ) {
 			options: {
 				swapLtrRtlInUrl: false
 			},
-			main: {
-				files: [
-					{
-						'editor-style-rtl.css': 'editor-style.css',
-						'style-rtl.css': 'style.css'
-					}
-				]
-			},
 			assets: {
 				files: [
 					{
@@ -83,6 +78,20 @@ module.exports = function( grunt ) {
 						src: [ '**/*.css', '!**/*rtl.css', '!**/*min.css' ],
 						dest: 'assets/css/',
 						ext: '-rtl.css'
+					}
+				]
+			},
+			editor: {
+				files: [
+					{
+						'editor-style-rtl.css': 'editor-style.css'
+					}
+				]
+			},
+			main: {
+				files: [
+					{
+						'style-rtl.css': 'style.css'
 					}
 				]
 			}
@@ -127,13 +136,6 @@ module.exports = function( grunt ) {
 			options: {
 				optimizationLevel: 3
 			},
-			screenshot: {
-				files: [
-					{
-						'screenshot.png': 'screenshot.png'
-					}
-				]
-			}
 			assets: {
 				files: [
 					{
@@ -143,8 +145,15 @@ module.exports = function( grunt ) {
 						dest: 'assets/images/'
 					}
 				]
-			}
-			wp: {
+			},
+			screenshot: {
+				files: [
+					{
+						'screenshot.png': 'screenshot.png'
+					}
+				]
+			},
+			wp_org: {
 				files: [
 					{
 						expand: true,
@@ -157,11 +166,11 @@ module.exports = function( grunt ) {
 		},
 
 		jshint: {
-			gruntfile: {
-				src: [ 'Gruntfile.js' ]
-			},
 			assets: {
 				src: [ 'assets/js/**/*.js', '!assets/js/**/*.min.js' ]
+			},
+			gruntfile: {
+				src: [ 'Gruntfile.js' ]
 			}
 		},
 
@@ -207,12 +216,8 @@ module.exports = function( grunt ) {
 				precision: 5,
 				sourceMap: false
 			},
-			all: {
+			assets: {
 				files: [
-					{
-						'editor-style.css': '.dev/sass/editor-style.scss',
-						'style.css': '.dev/sass/style.scss'
-					},
 					{
 						expand: true,
 						cwd: '.dev/sass/assets/',
@@ -220,14 +225,24 @@ module.exports = function( grunt ) {
 						dest: 'assets/css/'
 					}
 				]
+			},
+			editor: {
+				files: [
+					{
+						'editor-style.css': '.dev/sass/editor-style.scss'
+					}
+				]
+			},
+			main: {
+				files: [
+					{
+						'style.css': '.dev/sass/style.scss'
+					}
+				]
 			}
 		},
 
 		watch: {
-			css: {
-				files: '.dev/sass/**/*.scss',
-				tasks: [ 'sass', 'autoprefixer', 'cssjanus', 'cssmin' ]
-			},
 			images: {
 				files: 'assets/images/**/*.{gif,jpeg,jpg,png,svg}',
 				tasks: [ 'imagemin' ]
@@ -235,6 +250,10 @@ module.exports = function( grunt ) {
 			js: {
 				files: 'assets/js/**/*.js',
 				tasks: [ 'jshint', 'uglify' ]
+			},
+			sass: {
+				files: '.dev/sass/**/*.scss',
+				tasks: [ 'sass', 'autoprefixer', 'cssjanus', 'cssmin' ]
 			}
 		},
 
@@ -283,7 +302,7 @@ module.exports = function( grunt ) {
 	require( 'matchdep' ).filterDev( 'grunt-*' ).forEach( grunt.loadNpmTasks );
 
 	grunt.registerTask( 'default', [ 'sass', 'autoprefixer', 'cssjanus', 'cssmin', 'jshint', 'uglify', 'imagemin' ] );
-	grunt.registerTask( 'build',   [ 'default', 'version', 'clean', 'copy' ] );
+	grunt.registerTask( 'build',   [ 'default', 'version', 'clean:build', 'copy:build' ] );
 	grunt.registerTask( 'readme',  [ 'wp_readme_to_markdown' ] );
 	grunt.registerTask( 'version', [ 'replace', 'readme' ] );
 
