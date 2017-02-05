@@ -117,9 +117,9 @@ ln -s .dev/lib/bin/travis.yml .travis.yml
 | Job    | PHP    | PHPUnit    | WordPress    | Multisite    |
 | :----- | :----- | :--------- | :----------- | :----------- |
 | #1     | 5.3    | 4.8.x      | 4.4          | No           |
-| #2     | 5.3    | 4.8.x      | Stable       | No           |
+| #2     | 5.3    | 4.8.x      | Latest       | No           |
 | #3     | 5.3    | 4.8.x      | Trunk        | No           |
-| #4     | 7.1    | 6.0.x      | Stable       | No           |
+| #4     | 7.1    | 6.0.x      | Latest       | No           |
 | #5     | 7.1    | 6.0.x      | Trunk        | No           |
 
 ### Coveralls
