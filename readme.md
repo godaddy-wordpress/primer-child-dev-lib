@@ -32,37 +32,123 @@ $ git commit -m "Update dev-lib"
 
 ### `$ grunt`
 
-| Task           | Targets |
-| -------------- | ------- |
-| `sass`         | `.dev/sass/editor-style.scss -> editor-style.css`<br>`.dev/sass/style.scss -> style.css`<br>`.dev/sass/assets/**/*.scss -> assets/**/*.css` |
-| `autoprefixer` | `style.css`<br>`editor-style.css` |
-| `cssjanus`     | `style.css -> style-rtl.css`<br>`editor-style-rtl.css`<br>`assets/css/**/*.css -> assets/css/**/*-rtl.css` |
-| `cssmin`       | `assets/css/**/*.css -> assets/css/**/*.min.css` |
-| `jshint`       | `Gruntfile.js`<br>`assets/js/**/*.js` |
-| `uglify`       | `assets/js/**/*.js` |
-| `imagemin`     | `assets/images/**/*.{gif,jpeg,jpg,png,svg}` |
+ * `sass`
+ * `autoprefixer`
+ * `cssjanus`
+ * `cssmin`
+ * `jshint`
+ * `uglify`
+ * `imagemin`
 
 ### `$ grunt readme`
 
-| Task                    | Targets                   |
-| ----------------------- | ------------------------- |
-| `wp_readme_to_markdown` | `readme.txt -> readme.md` |
+ * wp_readme_to_markdown
 
 ### `$ grunt build`
 
-| Task      | Targets |
-| --------- | ------- |
-| `default` |         |
-| `version` |         |
-| `clean`   | `style.css -> style-rtl.css`<br>`editor-style-rtl.css`<br>`assets/css/**/*.css -> assets/css/**/*-rtl.css` |
-| `copy`    | `*.css -> build/*.css`<br>`*.php -> build/*.php`<br>`*.txt -> build/*.txt`<br>`screenshot.png -> build/screenshot.png`<br>`assets/** -> build/assets/**`<br>`inc/** -> build/inc/**`<br>`templates/** -> build/templates/**` |
+ * `default`
+ * `version`
+ * `clean`
+ * `copy`
 
 ### `$ grunt version`
 
-| Task      | Targets |
-| --------- | ------- |
-| `replace` | `*.php`<br>`inc/**/*.php`<br>`templates/**/*.php`<br>`.dev/sass/**/*.scss`<br>`readme.txt` |
-| `readme`  |         |
+ * `replace`
+ * `readme`
+
+### `$ grunt watch`
+
+ * `sass`
+ * `autoprefixer`
+ * `cssjanus`
+ * `cssmin`
+ * `imagemin`
+ * `jshint`
+ * `uglify`
+
+## Grunt Tasks
+
+### `autoprefixer`
+
+```
+.dev/sass/style.scss        -> style.css
+.dev/sass/editor-style.scss -> editor-style.css
+```
+
+### `clean`
+
+```
+build/*
+```
+
+### `copy`
+
+```
+*.css          -> build/*.css
+*.php          -> build/*.php
+*.txt          -> build/*.txt
+screenshot.png -> build/screenshot.png
+assets/**      -> build/assets/**
+inc/**         -> build/inc/**
+templates/**   -> build/templates/**
+```
+
+### `cssjanus`
+
+```
+style.css           -> style-rtl.css
+editor-style.css    -> editor-style-rtl.css
+assets/css/**/*.css -> assets/css/**/*-rtl.css
+```
+
+### `cssmin`
+
+```
+assets/css/**/*.css -> assets/css/**/*.min.css
+```
+
+### `jshint`
+
+```
+Gruntfile.js
+assets/js/**/*.js
+```
+
+### `imagemin`
+
+```
+assets/images/**/*.{gif,jpeg,jpg,png,svg}
+```
+
+### `replace`
+
+```
+*.php
+readme.txt
+.dev/sass/**/*.scss
+inc/**/*.php
+templates/**/*.php
+```
+
+### `sass`
+
+```
+.dev/sass/style.scss        -> style.css
+.dev/sass/editor-style.scss -> editor-style.css
+.dev/sass/assets/**/*.scss  -> assets/**/*.css
+```
+
+### `uglify`
+
+```
+assets/js/**/*.js
+```
+
+### `wp_readme_to_markdown`
+
+```
+readme.txt -> readme.md
+```
 
 ## Extras
 
