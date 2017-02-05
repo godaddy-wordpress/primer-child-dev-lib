@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-ln -is .dev/lib/bin/coveralls.yml .coveralls.yml
-ln -is .dev/lib/bin/gitignore .gitignore
-ln -is .dev/lib/bin/Gruntfile.js Gruntfile.js
-ln -is .dev/lib/bin/package.json package.json
-ln -is .dev/lib/bin/phpunit.xml.dist phpunit.xml.dist
-ln -is .dev/lib/bin/travis.yml .travis.yml
+ln -isv .dev/lib/bin/coveralls.yml .coveralls.yml
+ln -isv .dev/lib/bin/gitignore .gitignore
+ln -isv .dev/lib/bin/Gruntfile.js Gruntfile.js
+ln -isv .dev/lib/bin/package.json package.json
+ln -isv .dev/lib/bin/phpunit.xml.dist phpunit.xml.dist
+ln -isv .dev/lib/bin/travis.yml .travis.yml
 
-cp -i .dev/lib/bin/project-sample.json project.json
+cp -iv .dev/lib/bin/project-sample.json project.json
