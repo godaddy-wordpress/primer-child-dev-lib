@@ -114,13 +114,13 @@ ln -s .dev/lib/bin/travis.yml .travis.yml
 
 **Build Matrix**
 
-| Job    | PHP    | WordPress    | Multisite    |
-| :----- | :----- | :----------- | :----------- |
-| #1     | 5.3    | 4.4          | No           |
-| #2     | 5.3    | Stable       | No           |
-| #3     | 5.3    | Trunk        | No           |
-| #4     | 7.1    | Stable       | No           |
-| #5     | 7.1    | Trunk        | No           |
+| Job    | PHP    | PHPUnit    | WordPress    | Multisite    |
+| :----- | :----- | :--------- | :----------- | :----------- |
+| #1     | 5.3    | 4.8.x      | 4.4          | No           |
+| #2     | 5.3    | 4.8.x      | Stable       | No           |
+| #3     | 5.3    | 4.8.x      | Trunk        | No           |
+| #4     | 7.1    | 6.0.x      | Stable       | No           |
+| #5     | 7.1    | 6.0.x      | Trunk        | No           |
 
 ### Coveralls
 
