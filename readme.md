@@ -30,9 +30,9 @@ git commit -m "Update dev-lib"
 
 ## Grunt Task Targets
 
-Run a specific target in a task: `grunt imagemin:screenshot`
+Run all the targets in a task: `grunt imagemin`
 
-Or all the targets: `grunt imagemin`
+Or a specific target in a task: `grunt imagemin:screenshot`
 
 ```
 autoprefixer
