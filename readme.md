@@ -42,7 +42,7 @@ $ git commit -m "Update dev-lib"
 
 ### `$ grunt readme`
 
- * wp_readme_to_markdown
+ * `wp_readme_to_markdown`
 
 ### `$ grunt build`
 
