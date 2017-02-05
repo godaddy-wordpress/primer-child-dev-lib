@@ -48,8 +48,8 @@ $ git commit -m "Update dev-lib"
 
  * `default`
  * `version`
- * `clean`
- * `copy`
+ * `clean:build`
+ * `copy:build`
 
 ### `$ grunt version`
 
@@ -75,13 +75,13 @@ $ git commit -m "Update dev-lib"
 .dev/sass/editor-style.scss -> editor-style.css
 ```
 
-### `clean`
+### `clean:build`
 
 ```
 build/*
 ```
 
-### `copy`
+### `copy:build`
 
 ```
 *.css          -> build/*.css
@@ -93,41 +93,73 @@ inc/**         -> build/inc/**
 templates/**   -> build/templates/**
 ```
 
-### `cssjanus`
+### `cssjanus:main`
 
 ```
-style.css           -> style-rtl.css
-editor-style.css    -> editor-style-rtl.css
+style.css        -> style-rtl.css
+editor-style.css -> editor-style-rtl.css
+```
+
+### `cssjanus:assets`
+
+```
 assets/css/**/*.css -> assets/css/**/*-rtl.css
 ```
 
-### `cssmin`
+### `cssmin:assets`
 
 ```
 assets/css/**/*.css -> assets/css/**/*.min.css
 ```
 
-### `jshint`
+### `jshint:gruntfile`
 
 ```
 Gruntfile.js
+```
+
+### `jshint:assets`
+
+```
 assets/js/**/*.js
 ```
 
-### `imagemin`
+### `imagemin:screenshot`
+
+```
+screenshot.png
+```
+
+### `imagemin:assets`
 
 ```
 assets/images/**/*.{gif,jpeg,jpg,png,svg}
 ```
 
-### `replace`
+### `imagemin:wp`
+
+```
+wp_org_assets/**/*.{gif,jpeg,jpg,png,svg}
+```
+
+### `replace:php`
 
 ```
 *.php
-readme.txt
-.dev/sass/**/*.scss
 inc/**/*.php
 templates/**/*.php
+```
+
+### `replace:readme`
+
+```
+readme.txt
+```
+
+### `replace:sass`
+
+```
+.dev/sass/**/*.scss
 ```
 
 ### `sass`

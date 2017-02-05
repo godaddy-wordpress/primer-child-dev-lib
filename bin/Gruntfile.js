@@ -67,12 +67,16 @@ module.exports = function( grunt ) {
 			options: {
 				swapLtrRtlInUrl: false
 			},
-			all: {
+			main: {
 				files: [
 					{
 						'editor-style-rtl.css': 'editor-style.css',
 						'style-rtl.css': 'style.css'
-					},
+					}
+				]
+			},
+			assets: {
+				files: [
 					{
 						expand: true,
 						cwd: 'assets/css/',
@@ -123,17 +127,25 @@ module.exports = function( grunt ) {
 			options: {
 				optimizationLevel: 3
 			},
-			all: {
+			screenshot: {
 				files: [
 					{
 						'screenshot.png': 'screenshot.png'
-					},
+					}
+				]
+			}
+			assets: {
+				files: [
 					{
 						expand: true,
 						cwd: 'assets/images/',
 						src: [ '**/*.{gif,jpeg,jpg,png,svg}' ],
 						dest: 'assets/images/'
-					},
+					}
+				]
+			}
+			wp: {
+				files: [
 					{
 						expand: true,
 						cwd: 'wp-org-assets/',
@@ -145,8 +157,11 @@ module.exports = function( grunt ) {
 		},
 
 		jshint: {
-			all: {
-				src: [ 'Gruntfile.js', 'assets/js/**/*.js', '!assets/js/**/*.min.js' ]
+			gruntfile: {
+				src: [ 'Gruntfile.js' ]
+			},
+			assets: {
+				src: [ 'assets/js/**/*.js', '!assets/js/**/*.min.js' ]
 			}
 		},
 
