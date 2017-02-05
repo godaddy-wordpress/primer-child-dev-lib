@@ -54,10 +54,7 @@ $ git commit -m "Update dev-lib"
 | --------- | ------- |
 | `default` |         |
 | `version` |         |
-| `clean`   | ```style.css -> style-rtl.css
-editor-style-rtl.css
-assets/css/**/*.css -> assets/css/**/*-rtl.css
-``` |
+| `clean`   | `style.css -> style-rtl.css`<br>`editor-style-rtl.css`<br>`assets/css/**/*.css -> assets/css/**/*-rtl.css` |
 | `copy`    | `*.css -> build/*.css`<br>`*.php -> build/*.php`<br>`*.txt -> build/*.txt`<br>`screenshot.png -> build/screenshot.png`<br>`assets/** -> build/assets/**`<br>`inc/** -> build/inc/**`<br>`templates/** -> build/templates/**` |
 
 ### `$ grunt version`
