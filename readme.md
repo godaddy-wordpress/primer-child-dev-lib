@@ -139,7 +139,7 @@ assets/images/**/*.{gif,jpeg,jpg,png,svg}
 ### `imagemin:wp`
 
 ```
-wp_org_assets/**/*.{gif,jpeg,jpg,png,svg}
+wp-org-assets/**/*.{gif,jpeg,jpg,png,svg}
 ```
 
 ### `replace:php`
