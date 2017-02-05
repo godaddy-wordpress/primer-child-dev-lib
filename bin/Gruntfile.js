@@ -28,21 +28,15 @@ module.exports = function( grunt ) {
 				],
 				cascade: false
 			},
-			editor: {
-				src: [ 'editor-style.css' ]
-			},
-			main: {
-				src: [ 'style.css' ]
-			}
+			editor: [ 'editor-style.css' ],
+			main: [ 'style.css' ]
 		},
 
 		clean: {
 			options: {
 				force: true
 			},
-			build: {
-				src: [ 'build/*' ]
-			}
+			build: [ 'build/*' ]
 		},
 
 		copy: {
@@ -140,12 +134,8 @@ module.exports = function( grunt ) {
 		},
 
 		jshint: {
-			assets: {
-				src: [ 'assets/js/**/*.js', '!assets/js/**/*.min.js' ]
-			},
-			gruntfile: {
-				src: [ 'Gruntfile.js' ]
-			}
+			assets: [ 'assets/js/**/*.js', '!assets/js/**/*.min.js' ],
+			gruntfile: [ 'Gruntfile.js' ]
 		},
 
 		replace: {
