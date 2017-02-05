@@ -47,22 +47,18 @@ module.exports = function( grunt ) {
 
 		copy: {
 			build: {
-				files: [
-					{
-						expand: true,
-						cwd: '.',
-						src: [
-							'*.css',
-							'*.php',
-							'*.txt',
-							'screenshot.png',
-							'assets/**',
-							'inc/**',
-							'templates/**'
-						],
-						dest: 'build/'
-					}
-				]
+				expand: true,
+				cwd: '.',
+				src: [
+					'*.css',
+					'*.php',
+					'*.txt',
+					'screenshot.png',
+					'assets/**',
+					'inc/**',
+					'templates/**'
+				],
+				dest: 'build/'
 			}
 		},
 
@@ -71,29 +67,21 @@ module.exports = function( grunt ) {
 				swapLtrRtlInUrl: false
 			},
 			assets: {
-				files: [
-					{
-						expand: true,
-						cwd: 'assets/css/',
-						src: [ '**/*.css', '!**/*rtl.css', '!**/*min.css' ],
-						dest: 'assets/css/',
-						ext: '-rtl.css'
-					}
-				]
+				expand: true,
+				cwd: 'assets/css/',
+				src: [ '**/*.css', '!**/*rtl.css', '!**/*min.css' ],
+				dest: 'assets/css/',
+				ext: '-rtl.css'
 			},
 			editor: {
-				files: [
-					{
-						'editor-style-rtl.css': 'editor-style.css'
-					}
-				]
+				files: {
+					'editor-style-rtl.css': 'editor-style.css'
+				}
 			},
 			main: {
-				files: [
-					{
-						'style-rtl.css': 'style.css'
-					}
-				]
+				files: {
+					'style-rtl.css': 'style.css'
+				}
 			}
 		},
 
@@ -104,15 +92,11 @@ module.exports = function( grunt ) {
 				shorthandCompacting: false
 			},
 			assets: {
-				files: [
-					{
-						expand: true,
-						cwd: 'assets/css/',
-						src: [ '**/*.css', '!**/*.min.css' ],
-						dest: 'assets/css/',
-						ext: '.min.css'
-					}
-				]
+				expand: true,
+				cwd: 'assets/css/',
+				src: [ '**/*.css', '!**/*.min.css' ],
+				dest: 'assets/css/',
+				ext: '.min.css'
 			}
 		},
 
@@ -137,31 +121,21 @@ module.exports = function( grunt ) {
 				optimizationLevel: 3
 			},
 			assets: {
-				files: [
-					{
-						expand: true,
-						cwd: 'assets/images/',
-						src: [ '**/*.{gif,jpeg,jpg,png,svg}' ],
-						dest: 'assets/images/'
-					}
-				]
+				expand: true,
+				cwd: 'assets/images/',
+				src: [ '**/*.{gif,jpeg,jpg,png,svg}' ],
+				dest: 'assets/images/'
 			},
 			screenshot: {
-				files: [
-					{
-						'screenshot.png': 'screenshot.png'
-					}
-				]
+				files: {
+					'screenshot.png': 'screenshot.png'
+				}
 			},
 			wp_org: {
-				files: [
-					{
-						expand: true,
-						cwd: 'wp-org-assets/',
-						src: [ '**/*.{gif,jpeg,jpg,png,svg}' ],
-						dest: 'wp-org-assets/'
-					}
-				]
+				expand: true,
+				cwd: 'wp-org-assets/',
+				src: [ '**/*.{gif,jpeg,jpg,png,svg}' ],
+				dest: 'wp-org-assets/'
 			}
 		},
 
@@ -217,28 +191,20 @@ module.exports = function( grunt ) {
 				sourceMap: false
 			},
 			assets: {
-				files: [
-					{
-						expand: true,
-						cwd: '.dev/sass/assets/',
-						src: [ '**/*.scss' ],
-						dest: 'assets/css/'
-					}
-				]
+				expand: true,
+				cwd: '.dev/sass/assets/',
+				src: [ '**/*.scss' ],
+				dest: 'assets/css/'
 			},
 			editor: {
-				files: [
-					{
-						'editor-style.css': '.dev/sass/editor-style.scss'
-					}
-				]
+				files: {
+					'editor-style.css': '.dev/sass/editor-style.scss'
+				}
 			},
 			main: {
-				files: [
-					{
-						'style.css': '.dev/sass/style.scss'
-					}
-				]
+				files: {
+					'style.css': '.dev/sass/style.scss'
+				}
 			}
 		},
 
