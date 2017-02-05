@@ -242,6 +242,19 @@ module.exports = function( grunt ) {
 			}
 		},
 
+		uglify: {
+			options: {
+				ASCIIOnly: true
+			},
+			assets: {
+				expand: true,
+				cwd: 'assets/js/',
+				src: [ '**/*.js', '!**/*.min.js' ],
+				dest: 'assets/js/',
+				ext: '.min.js'
+			}
+		},
+
 		watch: {
 			images: {
 				files: 'assets/images/**/*.{gif,jpeg,jpg,png,svg}',
