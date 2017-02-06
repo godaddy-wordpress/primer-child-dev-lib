@@ -287,11 +287,11 @@ module.exports = function( grunt ) {
 
 	require( 'matchdep' ).filterDev( 'grunt-*' ).forEach( grunt.loadNpmTasks );
 
-	grunt.registerTask( 'default', [ 'sass', 'autoprefixer', 'cssjanus', 'cssmin', 'jshint', 'uglify', 'imagemin' ] );
-	grunt.registerTask( 'build',   [ 'default', 'version', 'clean:build', 'copy:build' ] );
-	grunt.registerTask( 'check',   [ 'devUpdate' ] );
-	grunt.registerTask( 'readme',  [ 'wp_readme_to_markdown' ] );
-	grunt.registerTask( 'update',  [ 'shell:update', 'shell:package', 'merge_yaml' ] );
-	grunt.registerTask( 'version', [ 'replace', 'readme' ] );
+	grunt.registerTask( 'default',        [ 'sass', 'autoprefixer', 'cssjanus', 'cssmin', 'jshint', 'uglify', 'imagemin' ] );
+	grunt.registerTask( 'build',          [ 'default', 'version', 'clean:build', 'copy:build' ] );
+	grunt.registerTask( 'check',          [ 'devUpdate' ] );
+	grunt.registerTask( 'readme',         [ 'wp_readme_to_markdown' ] );
+	grunt.registerTask( 'update-dev-lib', [ 'shell:update', 'shell:package', 'merge_yaml' ] );
+	grunt.registerTask( 'version',        [ 'replace', 'readme' ] );
 
 };
