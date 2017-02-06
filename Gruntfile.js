@@ -90,7 +90,7 @@ module.exports = function( grunt ) {
 		},
 
 		devUpdate: {
-			package: {
+			packages: {
 				options: {
 					packageJson: null,
 					packages: {

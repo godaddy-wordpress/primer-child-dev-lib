@@ -39,13 +39,15 @@ cssjanus
  |-- :main
 cssmin
  |-- :assets
-jshint
- |-- :assets
- |-- :gruntfile
+devUpdate
+ |-- :packages
 imagemin
  |-- :assets
  |-- :screenshot
  |-- :wp_org
+jshint
+ |-- :assets
+ |-- :gruntfile
 replace
  |-- :php
  |-- :readme
@@ -54,6 +56,9 @@ sass
  |-- :assets
  |-- :editor
  |-- :main
+shell
+ |-- :merge_package
+ |-- :update_dev_lib
 uglify
  |-- :assets
 watch
@@ -80,8 +85,14 @@ build
  |-- version
  |-- clean:build
  |-- copy:build
+check
+ |-- devUpdate
 readme
  |-- wp_readme_to_markdown
+update-dev-lib
+ |-- shell:update_dev_lib
+ |-- shell:merge_package
+ |-- merge_yaml
 version
  |-- replace
  |-- readme
