@@ -4,7 +4,7 @@ Common tools to facilitate the development and testing of Primer child themes.
 
 ## Installing
 
-From your project root, add this repo as a submodule and run the `setup.sh` script:
+From your project root, add this repo as a submodule, then run the `setup.sh` script:
 
 ```sh
 git submodule add -b master https://github.com/godaddy/wp-primer-child-dev-lib.git .dev/lib
@@ -13,7 +13,7 @@ bash .dev/lib/setup.sh
 
 ## Updating
 
-From your project root, run the Grunt task:
+From your project root, run:
 
 ```sh
 grunt update-dev-lib
@@ -22,9 +22,9 @@ git push
 
 ## Grunt Tasks & Targets
 
-Run all the targets in a task: `grunt imagemin`
+Run a task against all targets: `grunt imagemin`
 
-Or a specific target in a task: `grunt imagemin:screenshot`
+Or a specific target: `grunt imagemin:screenshot`
 
 ```
 autoprefixer
