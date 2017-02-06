@@ -13,10 +13,11 @@ bash .dev/lib/setup.sh
 
 ## Updating
 
-From your project root, run the `update.sh` script:
+From your project root, run the Grunt task:
 
 ```sh
-bash .dev/lib/update.sh
+grunt update-dev-lib
+git push
 ```
 
 ## Grunt Tasks & Targets
