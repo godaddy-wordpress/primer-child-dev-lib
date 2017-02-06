@@ -207,10 +207,10 @@ module.exports = function( grunt ) {
 		},
 
 		shell: {
-			package: {
+			merge_package: {
 				command: 'jq -s add package.json .dev/lib/package.json > temp.json && mv -f temp.json package.json'
 			},
-			update: {
+			update_dev_lib: {
 				command: 'git submodule update --remote .dev/lib && git add -v .dev/lib && git commit -vm "Update theme dev-lib"'
 			}
 		},
@@ -291,7 +291,7 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'build',          [ 'default', 'version', 'clean:build', 'copy:build' ] );
 	grunt.registerTask( 'check',          [ 'devUpdate' ] );
 	grunt.registerTask( 'readme',         [ 'wp_readme_to_markdown' ] );
-	grunt.registerTask( 'update-dev-lib', [ 'shell:update', 'shell:package', 'merge_yaml' ] );
+	grunt.registerTask( 'update-dev-lib', [ 'shell:update_dev_lib', 'shell:merge_package', 'merge_yaml' ] );
 	grunt.registerTask( 'version',        [ 'replace', 'readme' ] );
 
 };
