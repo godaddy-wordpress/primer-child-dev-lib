@@ -4,12 +4,7 @@ module.exports = function( grunt ) {
 
 	'use strict';
 
-	var _ = require( 'lodash' );
-
-	var pkg = _.merge(
-		grunt.file.readJSON( 'package.json' ),
-		grunt.file.readJSON( 'project.json' )
-	);
+	var pkg = grunt.file.readJSON( 'package.json' );
 
 	grunt.initConfig( {
 
@@ -138,6 +133,19 @@ module.exports = function( grunt ) {
 			gruntfile: [ 'Gruntfile.js' ]
 		},
 
+		merge_yaml: {
+			coveralls: {
+				base: '.dev/lib/coveralls.yml',
+				target: '.coveralls.yml',
+				dest: '.coveralls.yml'
+			},
+			travis: {
+				base: '.dev/lib/travis.yml',
+				target: '.travis.yml',
+				dest: '.travis.yml'
+			}
+		},
+
 		replace: {
 			php: {
 				overwrite: true,
@@ -195,6 +203,15 @@ module.exports = function( grunt ) {
 				files: {
 					'style.css': '.dev/sass/style.scss'
 				}
+			}
+		},
+
+		shell: {
+			package: {
+				command: 'jq -s add package.json .dev/lib/package.json > temp.json && mv -f temp.json package.json'
+			},
+			update: {
+				command: 'git submodule update --remote .dev/lib && git add -v .dev/lib && git commit -vm "Update theme dev-lib"'
 			}
 		},
 
@@ -272,7 +289,9 @@ module.exports = function( grunt ) {
 
 	grunt.registerTask( 'default', [ 'sass', 'autoprefixer', 'cssjanus', 'cssmin', 'jshint', 'uglify', 'imagemin' ] );
 	grunt.registerTask( 'build',   [ 'default', 'version', 'clean:build', 'copy:build' ] );
+	grunt.registerTask( 'check',   [ 'devUpdate' ] );
 	grunt.registerTask( 'readme',  [ 'wp_readme_to_markdown' ] );
+	grunt.registerTask( 'update',  [ 'shell:update', 'shell:package', 'merge_yaml' ] );
 	grunt.registerTask( 'version', [ 'replace', 'readme' ] );
 
 };

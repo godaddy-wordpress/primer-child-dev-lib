@@ -8,7 +8,7 @@ From your project root, add this repo as a submodule and run the `setup.sh` scri
 
 ```sh
 git submodule add -b master https://github.com/godaddy/wp-primer-child-dev-lib.git .dev/lib
-bash .dev/lib/bin/setup.sh
+bash .dev/lib/setup.sh
 ```
 
 ## Updating
@@ -16,7 +16,7 @@ bash .dev/lib/bin/setup.sh
 From your project root, run the `update.sh` script:
 
 ```sh
-bash .dev/lib/bin/update.sh
+bash .dev/lib/update.sh
 ```
 
 ## Grunt Tasks & Targets
