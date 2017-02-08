@@ -45,7 +45,6 @@ devUpdate
 imagemin
  |-- :assets
  |-- :screenshot
- |-- :wp_org
 jshint
  |-- :assets
  |-- :gruntfile
@@ -58,7 +57,7 @@ sass
  |-- :editor
  |-- :main
 shell
- |-- :merge_package
+ |-- :merge_packages
  |-- :update_dev_lib
 uglify
  |-- :assets
@@ -67,6 +66,7 @@ watch
  |-- :js
  |-- :sass
 wp_readme_to_markdown
+ |-- :main
 ```
 
 ## Grunt Task Groups
@@ -92,7 +92,7 @@ readme
  |-- wp_readme_to_markdown
 update-dev-lib
  |-- shell:update_dev_lib
- |-- shell:merge_package
+ |-- shell:merge_packages
  |-- merge_yaml
 version
  |-- replace

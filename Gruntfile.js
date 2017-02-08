@@ -119,12 +119,6 @@ module.exports = function( grunt ) {
 				files: {
 					'screenshot.png': 'screenshot.png'
 				}
-			},
-			wp_org: {
-				expand: true,
-				cwd: 'wp-org-assets/',
-				src: [ '**/*.{gif,jpeg,jpg,png,svg}' ],
-				dest: 'wp-org-assets/'
 			}
 		},
 
@@ -207,11 +201,18 @@ module.exports = function( grunt ) {
 		},
 
 		shell: {
-			merge_package: {
-				command: 'jq -s add package.json .dev/lib/package.json > temp.json && mv -f temp.json package.json'
+			merge_packages: {
+				command: [
+					'jq -s add package.json .dev/lib/package.json > temp.json',
+					'mv -f temp.json package.json'
+				].join( ' && ' )
 			},
 			update_dev_lib: {
-				command: 'git submodule update --remote .dev/lib && git add -v .dev/lib && git commit -vm "Update theme dev-lib"'
+				command: [
+					'git submodule update --remote .dev/lib',
+					'git add -v .dev/lib',
+					'git commit -vm "Update dev-lib"'
+				].join( ' && ' )
 			}
 		},
 
@@ -246,33 +247,24 @@ module.exports = function( grunt ) {
 		wp_readme_to_markdown: {
 			options: {
 				post_convert: function( readme ) {
-					var badges = {
-						grunt: '[![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](https://gruntjs.com)',
-						david_dev: '[![devDependency Status](https://david-dm.org/' + pkg.repository + '/dev-status.svg)](https://david-dm.org/' + pkg.repository + '?type=dev)',
-						php: '[![Required PHP Version](https://img.shields.io/badge/php-' + pkg.engines.php + '-8892bf.svg)](https://secure.php.net/supported-versions.php)',
-						locales: '[![Supported Locales](https://img.shields.io/badge/locales-' + pkg.locales.length + '-orange.svg)]()',
-						wordpress: '[![Required WordPress Version](https://img.shields.io/badge/wordpress-' + pkg.engines.wordpress + '-0073aa.svg)](https://wordpress.org/download/release-archive/)',
-						travis: '[![Build Status](https://travis-ci.org/' + pkg.repository + '.svg?branch=master)](https://travis-ci.org/' + pkg.repository + ')',
-						coveralls: '[![Coverage Status](https://coveralls.io/repos/' + pkg.repository + '/badge.svg?branch=master)](https://coveralls.io/github/' + pkg.repository + ')',
-						license: '[![License](https://img.shields.io/github/license/' + pkg.repository + '.svg)](https://github.com/' + pkg.repository + '/blob/master/license.txt)'
-					};
+					var matches = readme.match( /\*\*Tags:\*\*(.*)\r\n/ ),
+					    tags    = matches[1].trim().split( ', ' ),
+					    section = matches[0];
 
-					// Required
-					readme = readme.replace( '## Description ##', badges.grunt + "  \n\n## Description ##" );
-					readme = addBadge( readme, badges.david_dev );
+					for ( var i = 0; i < tags.length; i++ ) {
+						section = section.replace( tags[i], '[' + tags[i] + '](https://wordpress.org/themes/tags/' + tags[i] + '/)' );
+					}
 
-					// Extras
-					readme = ( pkg.engines.php )                   ? addBadge( readme, badges.php )       : readme;
-					readme = ( pkg.engines.wordpress )             ? addBadge( readme, badges.wordpress ) : readme;
-					readme = ( pkg.locales.length > 0 )            ? addBadge( readme, badges.locales )   : readme;
-					readme = grunt.file.exists( '.travis.yml' )    ? addBadge( readme, badges.travis )    : readme;
-					readme = grunt.file.exists( '.coveralls.yml' ) ? addBadge( readme, badges.coveralls ) : readme;
-					readme = grunt.file.exists( 'license.txt' )    ? addBadge( readme, badges.license )   : readme;
+					// Tag links
+					readme = readme.replace( matches[0], section );
+
+					// Badges
+					readme = readme.replace( '## Description ##', grunt.template.process( pkg.badges.join( ' ' ) ) + "  \r\n\r\n## Description ##" );
 
 					return readme;
 				}
 			},
-			all: {
+			main: {
 				files: {
 					'readme.md': 'readme.txt'
 				}
@@ -281,19 +273,14 @@ module.exports = function( grunt ) {
 
 	} );
 
-	function addBadge( readme, badge ) {
-
-		return readme.replace( " \n\n## Description ##", badge + "  \n\n## Description ##" );
-
-	}
-
 	require( 'matchdep' ).filterDev( 'grunt-*' ).forEach( grunt.loadNpmTasks );
 
 	grunt.registerTask( 'default',        [ 'sass', 'autoprefixer', 'cssjanus', 'cssmin', 'jshint', 'uglify', 'imagemin' ] );
 	grunt.registerTask( 'build',          [ 'default', 'version', 'clean:build', 'copy:build' ] );
 	grunt.registerTask( 'check',          [ 'devUpdate' ] );
+	grunt.registerTask( 'merge-configs',  [ 'shell:merge_packages', 'merge_yaml' ] );
 	grunt.registerTask( 'readme',         [ 'wp_readme_to_markdown' ] );
-	grunt.registerTask( 'update-dev-lib', [ 'shell:update_dev_lib', 'shell:merge_package', 'merge_yaml' ] );
+	grunt.registerTask( 'update-dev-lib', [ 'shell:update_dev_lib', 'merge-configs' ] );
 	grunt.registerTask( 'version',        [ 'replace', 'readme' ] );
 
 };
