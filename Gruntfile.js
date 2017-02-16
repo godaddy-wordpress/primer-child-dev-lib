@@ -92,14 +92,6 @@ module.exports = function( grunt ) {
 		devUpdate: {
 			packages: {
 				options: {
-					packageJson: null,
-					packages: {
-						devDependencies: true,
-						dependencies: false
-					},
-					reportOnlyPkgs: [],
-					reportUpdated: false,
-					semver: true,
 					updateType: 'force'
 				}
 			}
