@@ -22,6 +22,7 @@ env:
   - WP_VERSION=trunk WP_MULTISITE=0
 
 matrix:
+  fast_finish: true
   exclude:
     - php: 7.1
       env: WP_VERSION=4.4 WP_MULTISITE=0
