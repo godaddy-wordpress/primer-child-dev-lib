@@ -10,26 +10,23 @@ notifications:
 branches:
   only:
     - master
-    - develop
 
 php:
   - 5.3
-  - 7.1
+  - 5.6
 
 env:
-  - WP_VERSION=4.4 WP_MULTISITE=0
   - WP_VERSION=latest WP_MULTISITE=0
-  - WP_VERSION=trunk WP_MULTISITE=0
+  - WP_VERSION=4.4 WP_MULTISITE=0
+  - WP_VERSION=4.6 WP_MULTISITE=0
 
 matrix:
-  exclude:
-    - php: 7.1
-      env: WP_VERSION=4.4 WP_MULTISITE=0
+  include:
+    - php: 5.3
+      env: WP_VERSION=latest WP_MULTISITE=1
 
 before_script:
-  - curl https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli-nightly.phar > /tmp/wp-cli.phar
-  - chmod +x /tmp/wp-cli.phar
-  - bash .dev/lib/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
+  - bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
   - |
     if [[ ${TRAVIS_PHP_VERSION:0:2} == "7." ]]; then
@@ -42,5 +39,5 @@ before_script:
     phpcs --config-set installed_paths $HOME/.composer/vendor/wp-coding-standards/wpcs
 
 script:
-  - phpcs --standard=.dev/lib/phpcs.ruleset.xml $(find . -name '*.php')
-  - phpunit -c .dev/lib/phpunit.xml.dist
+  - phpcs --standard=phpcs.ruleset.xml $(find . -name '*.php')
+  - phpunit
